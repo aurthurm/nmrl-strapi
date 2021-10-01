@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blog_slides",
+  "info": {
+    "name": "slide",
+    "icon": "dice-d20"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}

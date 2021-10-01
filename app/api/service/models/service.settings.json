@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "name": "service_category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "categories": {
+      "type": "enumeration",
+      "enum": [
+        "surveillance",
+        "training",
+        "research",
+        "diagnostic_services",
+        "proficiency_testing"
+      ]
+    }
+  }
+}

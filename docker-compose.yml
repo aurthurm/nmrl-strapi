@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  nuxt_fe:
+    image: node:12
+    working_dir: "/var/www/app"
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - "80:3000"
+    volumes:
+      - ./blog:/var/www/app
+    command: bash -c "npm run dev"
+
+  strapi_be:
+    image: strapi/strapi
+    container_name: strapi_be
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    #    links:
+    #      - mongo:mongo
+    networks:
+      - strapi-nmrl-net
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - "1337:1337"
+
+  mongo_db:
+    image: mongo
+    container_name: mongo_db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+
+    networks:
+      - strapi-nmrl-net
+    volumes:
+      - web_data:/data/db
+    ports:
+      - "27017:27017"
+
+networks:
+    strapi-nmrl-net:
+        driver: bridge
+
+volumes:
+   web_data:

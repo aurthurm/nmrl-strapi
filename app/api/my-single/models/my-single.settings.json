@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "my_singles",
+  "info": {
+    "name": "service_page",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "text"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "Facebook": {
+      "type": "component",
+      "repeatable": false,
+      "component": "social.facebook"
+    }
+  }
+}

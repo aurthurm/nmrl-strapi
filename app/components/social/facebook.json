@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_social_facebooks",
+  "info": {
+    "name": "facebook",
+    "icon": "volleyball-ball"
+  },
+  "options": {},
+  "attributes": {
+    "handle": {
+      "type": "string"
+    }
+  }
+}
